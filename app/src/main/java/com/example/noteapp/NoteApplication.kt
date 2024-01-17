@@ -6,7 +6,7 @@ import com.example.noteapp.data.AppDataContainer
 
 class NoteApplication: Application() {
 
-    private lateinit var container: AppContainer
+    lateinit var container: AppContainer
 
     override fun onCreate() {
         super.onCreate()
