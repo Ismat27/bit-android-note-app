@@ -26,7 +26,7 @@ class NoteListFragment : Fragment(R.layout.fragment_note_list) {
     private val adapter = NoteListAdapter(
         onClickCard = { note ->
             findNavController().navigate(
-                NoteListFragmentDirections.actionNoteListFragmentToNoteDetailFragment(
+                NoteListFragmentDirections.actionNoteListFragmentToNoteEntryFragment(
                     note.id
                 )
             )
