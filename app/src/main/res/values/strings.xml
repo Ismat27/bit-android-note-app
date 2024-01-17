@@ -2,9 +2,11 @@
     <string name="app_name">Note App</string>
     <string name="new_note">New Note</string>
     <string name="my_notes">My Notes</string>
-    <string name="note_title">This is a not title</string>
+    <string name="note_title">Title</string>
     <string name="note_body">This is a post body</string>
     <string name="previous_notes">Previous Notes</string>
     <string name="save_note">Save</string>
     <string name="tap_to_write">Tap to start writing here</string>
+    <string name="edit_note">Edit Note</string>
+    <string name="update_note">Update</string>
 </resources>
