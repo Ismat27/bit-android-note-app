@@ -10,6 +10,7 @@ import com.example.noteapp.databinding.NoteItemCardBinding
 
 class NoteListAdapter(
     private val onClickCard: (note: Note) -> Unit = {},
+    private val onDelete: (note: Note) -> Unit = {},
 ) :
     ListAdapter<Note, NoteListAdapter.NoteListViewHolder>(NoteDiffCallback()) {
 
@@ -20,6 +21,9 @@ class NoteListAdapter(
             binding.apply {
                 noteTitle.text = note.title
                 noteBody.text = note.body
+                ibDelete.setOnClickListener {
+                    onDelete(note)
+                }
             }
 
             binding.root.setOnClickListener {

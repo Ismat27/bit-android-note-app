@@ -9,4 +9,6 @@
     <string name="tap_to_write">Tap to start writing here</string>
     <string name="edit_note">Edit Note</string>
     <string name="update_note">Update</string>
+    <string name="delete_note">Delete</string>
+    <string name="remove_note">remove note</string>
 </resources>

@@ -30,6 +30,9 @@ class NoteListFragment : Fragment(R.layout.fragment_note_list) {
                     note.id
                 )
             )
+        },
+        onDelete = { note ->
+            viewModel.removeNote(note)
         }
     )
 
