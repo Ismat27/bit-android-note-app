@@ -16,32 +16,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnMyNotes"
-        style="@style/filledButton"
+    <Button
+        android:id="@+id/myNotes"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/primary_filled_bg"
         android:text="@string/my_notes"
-        app:layout_constraintEnd_toStartOf="@+id/AddNote"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddNote"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivNoteHeader" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/AddNote"
-        style="@style/outlinedButton"
+    <Button
+        android:id="@+id/btnAddNote"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:background="@drawable/black_outline_bg"
         android:text="@string/new_note"
-        app:backgroundTint="@drawable/black_outline_bg"
-        app:layout_constraintBaseline_toBaselineOf="@id/btnMyNotes"
+        android:textColor="?attr/colorPrimary"
+        app:backgroundTint="@null"
+        app:layout_constraintBaseline_toBaselineOf="@id/myNotes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnMyNotes" />
+        app:layout_constraintStart_toEndOf="@+id/myNotes" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvNoteList"
@@ -50,7 +51,7 @@
         android:layout_marginTop="24dp"
         android:paddingHorizontal="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnMyNotes"
+        app:layout_constraintTop_toBottomOf="@id/myNotes"
         tools:listitem="@layout/note_item_card" />
 
 
