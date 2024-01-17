@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="filledButton">
+        <item name="android:background">@drawable/light_purple_bg</item>
+        <item name="backgroundTint">@drawable/light_purple_bg</item>
+        <item name="android:textColor">?attr/colorOnPrimaryContainer</item>
+    </style>
+
+    <style name="outlinedButton">
+        <item name="android:background">@drawable/black_outline_bg</item>
+        <item name="backgroundTint">@drawable/black_outline_bg</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>
