@@ -11,4 +11,7 @@
     <string name="update_note">Update</string>
     <string name="delete_note">Delete</string>
     <string name="remove_note">remove note</string>
+    <string name="modal_title">Modal Title</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
 </resources>
