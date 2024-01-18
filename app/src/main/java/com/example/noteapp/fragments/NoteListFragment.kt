@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.noteapp.NoteListAdapter
 import com.example.noteapp.R
+import com.example.noteapp.data.Note
 import com.example.noteapp.databinding.FragmentNoteListBinding
 import com.example.noteapp.viewmodel.NoteListViewModel
 import kotlinx.coroutines.launch
@@ -23,6 +24,12 @@ class NoteListFragment : Fragment(R.layout.fragment_note_list) {
 
     private val viewModel by viewModels<NoteListViewModel> { NoteListViewModel.Factory }
 
+    private val deleteModal = PromptModalFragment(
+        title = "Delete Note?",
+        body = "This action is irreversible.\nDo you want to continue?",
+        onClickYes = {}
+    )
+
     private val adapter = NoteListAdapter(
         onClickCard = { note ->
             findNavController().navigate(
@@ -32,9 +39,15 @@ class NoteListFragment : Fragment(R.layout.fragment_note_list) {
             )
         },
         onDelete = { note ->
-            viewModel.removeNote(note)
+            deleteModal.show(childFragmentManager, "Delete model")
+            deleteModal.onClickYes = { onDeleteNote(note) }
         }
     )
+
+    private fun onDeleteNote(note: Note) {
+        viewModel.removeNote(note)
+        deleteModal.dismiss()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

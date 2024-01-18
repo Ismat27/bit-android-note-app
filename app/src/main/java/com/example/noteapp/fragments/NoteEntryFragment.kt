@@ -25,6 +25,11 @@ class NoteEntryFragment : Fragment(R.layout.fragment_note_entry) {
 
     private val args: NoteEntryFragmentArgs by navArgs()
 
+    private val promptModal =
+        PromptModalFragment("Add new note", "This will create a new note for you.\nContinue?") {
+            submitNote()
+        }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -45,10 +50,8 @@ class NoteEntryFragment : Fragment(R.layout.fragment_note_entry) {
             }
 
             btnSave.setOnClickListener {
-                val title = etNoteTitle.text.toString()
-                val body = etNoteBody.text.toString().trim()
                 if (validateInput()) {
-                    viewModel.saveOrUpdateNote(noteId, title, body)
+                    promptModal.show(childFragmentManager, "save or update modal")
                 } else {
                     Toast.makeText(requireContext(), "Enter note title and body", Toast.LENGTH_LONG)
                         .show()
@@ -58,6 +61,9 @@ class NoteEntryFragment : Fragment(R.layout.fragment_note_entry) {
         }
 
         if (noteId > 0) {
+
+            promptModal.title = "Edit note"
+            promptModal.body = "This will update the content of your note.\nContinue?."
 
             with(binding) {
                 btnAddNote.text = getString(R.string.edit_note)
@@ -77,6 +83,17 @@ class NoteEntryFragment : Fragment(R.layout.fragment_note_entry) {
             }
         }
 
+    }
+
+    private fun submitNote() {
+        val title = binding.etNoteTitle.text.toString().trim()
+        val body = binding.etNoteBody.text.toString().trim()
+        viewModel.saveOrUpdateNote(args.noteId, title, body)
+        if (args.noteId == 0) {
+            binding.etNoteTitle.setText("")
+            binding.etNoteBody.setText("")
+        }
+        promptModal.dismiss()
     }
 
     private fun validateInput(): Boolean {
